@@ -10,13 +10,12 @@ const DetailsPage = () => {
 
   const fetchMovieDetails = async () => {
     setIsLoading(true);
-    const URL = `https://api.themoviedb.org/3/movie/${movieId}`;
+    const URL = `${process.env.REACT_APP_BASE_URL}/movie/${movieId}`;
     const options = {
       method: "GET",
       headers: {
         accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwODg2YTkyZTk4ZjExNTE3ZDI1Y2NjZWMyYmExNDA4ZiIsInN1YiI6IjY0ZTA2MDMzYTNiNWU2MDFkNTllNDUxMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.O_EpDFrRgRX8vPmn03ROiLIdsPSXsfAfcSo2Eg4QzC8",
+        Authorization: process.env.REACT_APP_API_TOKEN,
       },
     };
     try {
