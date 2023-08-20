@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/GSIV23_KARTHIK_K/static/css/main.69be61c4.css",
-    "main.js": "/GSIV23_KARTHIK_K/static/js/main.a9e344fe.js",
+    "main.js": "/GSIV23_KARTHIK_K/static/js/main.2b0e407a.js",
     "index.html": "/GSIV23_KARTHIK_K/index.html",
     "main.69be61c4.css.map": "/GSIV23_KARTHIK_K/static/css/main.69be61c4.css.map",
-    "main.a9e344fe.js.map": "/GSIV23_KARTHIK_K/static/js/main.a9e344fe.js.map"
+    "main.2b0e407a.js.map": "/GSIV23_KARTHIK_K/static/js/main.2b0e407a.js.map"
   },
   "entrypoints": [
     "static/css/main.69be61c4.css",
-    "static/js/main.a9e344fe.js"
+    "static/js/main.2b0e407a.js"
   ]
 }
