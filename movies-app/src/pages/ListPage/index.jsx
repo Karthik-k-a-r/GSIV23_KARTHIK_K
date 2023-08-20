@@ -1,19 +1,20 @@
 import { Home, Search } from "@mui/icons-material";
 import { TextField, InputAdornment, CircularProgress } from "@mui/material";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import MovieCard from "../../components/MovieCard";
 import { Link } from "react-router-dom";
 import { debounce } from "lodash";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const ListPage = () => {
   const [moviesList, setMoviesList] = useState([]);
   const [searchString, setSearchString] = useState();
-  const [isLoading, setIsLoading] = useState(false);
+  const [totalPage, setTotalPage] = useState(0);
   const [page, setPage] = useState(1);
-  const observerTarget = useRef(null);
+  const [searchPage, setSearchPage] = useState(1);
 
   const upcomingMovieDetails = async () => {
-    setIsLoading(true);
+    // setIsLoading(true);
     const URL = `https://api.themoviedb.org/3/movie/upcoming?page=${page}`;
     const options = {
       method: "GET",
@@ -28,41 +29,23 @@ const ListPage = () => {
       const data = await response.json();
       const results = data?.results;
       setMoviesList((prevData) => [...prevData, ...results]);
+      setTotalPage(data?.total_pages);
       setPage((prevPage) => prevPage + 1);
     } catch (error) {
       console.log(error.message);
     } finally {
-      setIsLoading(false);
+      //   setIsLoading(false);
     }
   };
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if(entries[0].isIntersecting){
-            upcomingMovieDetails();
-        }
-      },
-      { threshold: 1 }
-    );
-
-    if (observerTarget.current) {
-      observer.observe(observerTarget.current);
-    }
-    return () => {
-      if (observerTarget.current) {
-        observer.unobserve(observerTarget.current);
-      }
-    };
-  }, [observerTarget]);
-
-  useEffect(() => {
+    console.log("main");
     upcomingMovieDetails();
   }, []);
 
   const searchByMovieName = () => {
-    setIsLoading(true);
-    const URL = `https://api.themoviedb.org/3/search/movie?query=${searchString}`;
+    // setIsLoading(true);
+    const URL = `https://api.themoviedb.org/3/search/movie?query=${searchString}&page=${searchPage}`;
     const options = {
       method: "GET",
       headers: {
@@ -76,21 +59,27 @@ const ListPage = () => {
         return response.json();
       })
       .then((data) => {
+        console.log("2"+searchPage);
         setMoviesList(data?.results);
-        setIsLoading(false);
+        setTotalPage(data?.total_pages);
+        setSearchPage((prevPage) => prevPage + 1);
+        console.log("3"+searchPage);
+        // setIsLoading(false);
       })
       .catch((error) => {
         console.log(error.message);
-        setIsLoading(false);
+        // setIsLoading(false);
       });
   };
 
   const debounceSearch = debounce((value) => {
     setSearchString(value);
-  }, 350);
+  }, 500);
 
   useEffect(() => {
     if (searchString) {
+      setSearchPage(1);
+      console.log("1"+searchPage);
       searchByMovieName();
     }
   }, [searchString]);
@@ -98,6 +87,8 @@ const ListPage = () => {
   const handleSearchChange = (e) => {
     debounceSearch(e.target.value);
   };
+
+  console.log(searchPage+"searchpage");
 
   return (
     <div className="bg-white">
@@ -119,21 +110,46 @@ const ListPage = () => {
           <Home />
         </Link>
       </nav>
-      {isLoading ? (
-        <div className="flex h-20 items-center justify-center">
-          <CircularProgress />
-        </div>
-      ) : (
-        <div className="flex item-start flex-wrap text-center py-4 px-8 justify-center gap-4">
-          {moviesList &&
-            moviesList.map((movie) => (
+      {/* {searchResult ? (
+        <InfiniteScroll
+          dataLength={searchResult?.length}
+          next={searchByMovieName}
+          hasMore={true} // Replace with a condition based on your data source
+          loader={
+            <div className="flex h-20 items-center justify-center">
+              <CircularProgress />
+            </div>
+          }
+          endMessage={<p>No more data to load.</p>}
+        >
+          <div className="flex item-start flex-wrap text-center py-4 px-8 justify-center gap-4">
+            {searchResult?.map((movie) => (
               <Link key={movie.id} to={`/movie/${movie.id}`}>
                 <MovieCard movie={movie} />
               </Link>
             ))}
+          </div>
+        </InfiniteScroll> */}
+
+      <InfiniteScroll
+        dataLength={moviesList?.length}
+        next={searchByMovieName}
+        hasMore={true} // Replace with a condition based on your data source
+        loader={
+          <div className="flex h-20 items-center justify-center">
+            <CircularProgress />
+          </div>
+        }
+        endMessage={<p>No more data to load.</p>}
+      >
+        <div className="flex item-start flex-wrap text-center py-4 px-8 justify-center gap-4">
+          {moviesList?.map((movie) => (
+            <Link key={movie.id} to={`/movie/${movie.id}`}>
+              <MovieCard movie={movie} />
+            </Link>
+          ))}
         </div>
-      )}
-      <div ref={observerTarget}></div>
+      </InfiniteScroll>
     </div>
   );
 };
