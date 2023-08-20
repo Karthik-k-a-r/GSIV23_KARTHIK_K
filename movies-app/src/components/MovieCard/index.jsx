@@ -1,10 +1,14 @@
 import React from "react";
 
-const MovieCard = ({movie}) => {
+const MovieCard = ({ movie }) => {
   return (
     <div className="w-52 h-[320px] rounded-lg flex flex-col shadow-md">
       <img
-        src={movie?.poster_path ? `http://image.tmdb.org/t/p/original${movie?.poster_path}` : "https://media.vintagestock.com/media/cache/77/c3/77c307f810a2d86169428188ced3e141.jpg"}
+        src={
+          movie?.poster_path
+            ? `http://image.tmdb.org/t/p/original${movie?.poster_path}`
+            : "https://media.vintagestock.com/media/cache/77/c3/77c307f810a2d86169428188ced3e141.jpg"
+        }
         alt="Movie poster"
         className="w-full h-60 rounded-t-lg"
       />
