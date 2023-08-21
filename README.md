@@ -1,6 +1,6 @@
 # MovieFusion: Movie Information App
 
-Check out the deployed App - https://karthik-k-a-r.github.io/GSIV23_KARTHIK_K/
+Check out the deployed App - https://Karthik-k-a-r.github.io/Movie_Fusion/
 
 Welcome to MovieFusion, web application designed to provide users with information about upcoming movies, detailed movie pages and search functionality.
 Tech Stack - ReactJS, JavaScript, Tailwind CSS, HTML.
