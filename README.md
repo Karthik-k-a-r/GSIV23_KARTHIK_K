@@ -1,6 +1,6 @@
 # MovieFusion: Movie Information App
 
-Check out the deployed App - https://Karthik-k-a-r.github.io/Movie_Fusion/
+Check out the deployed App - https://Karthik-k-a-r.github.io/MOVIE_FUSION/
 
 Welcome to MovieFusion, web application designed to provide users with information about upcoming movies, detailed movie pages and search functionality.
 Tech Stack - ReactJS, JavaScript, Tailwind CSS, HTML.
@@ -18,7 +18,7 @@ Follow these steps to set up and run the MovieFusion app:
 ## **Clone the Repository:**
     git clone <repository_url>
 ## **Checkout to folder**
-    cd GSIV23_KARTHIK_K
+    cd MOVIE_FUSION
 
 ## **Install Dependencies:**
     npm install

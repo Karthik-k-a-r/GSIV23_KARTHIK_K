@@ -1,7 +1,7 @@
 {
   "name": "movies-app",
   "version": "0.1.0",
-  "homepage": "https://Karthik-k-a-r.github.io/Movie_Fusion",
+  "homepage": "https://Karthik-k-a-r.github.io/MOVIE_FUSION",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.1",
