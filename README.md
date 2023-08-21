@@ -1,6 +1,6 @@
 ## GSIV23_KARTHIK_K
 
-Check out the deployed App - https://karthik-k-a-r.github.io/GSIV23_KARTHIK_K/#/list
+Check out the deployed App - https://github.com/Karthik-k-a-r/GSIV23_KARTHIK_K
 
 # MovieFusion: Movie Information App
 
@@ -63,7 +63,7 @@ Used for designing the UI components and icons (Search,Home icon etc..).
 JavaScript library for making HTTP requests. By using this we can improve the efficiency and reliability of data fetching as it supports some additional features like interceptors for request and response manipulation, request cancellation, and handling different types of responses.(As this MovieFusion requires minimal number of API calls, I used simple fetch API (return promise))
 
 ## Redux
-It is a state management library that helps to manage the state of application in a more organized manner. It's particularly beneficial for apps with complex data flows/shared states between components. (As this MovieFusion requires minimal state management, I used UseState method from React) 
+It is a state management library that helps to manage the state of application in a more organized manner. It's particularly beneficial for apps with complex data flows/shared states between components. (As this MovieFusion requires minimal/no state management, I used local state for storing the data) 
 
 ## Jest for Testcases
 It is a JavaScript testing framework.Test-driven development (TDD) or writing tests after implementation can improve the overall quality and stability of the app.
