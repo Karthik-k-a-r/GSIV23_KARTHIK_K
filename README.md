@@ -1,6 +1,6 @@
 ## GSIV23_KARTHIK_K
 
-Check out the deployed App - https://github.com/Karthik-k-a-r/GSIV23_KARTHIK_K
+Check out the deployed App - https://karthik-k-a-r.github.io/GSIV23_KARTHIK_K/
 
 # MovieFusion: Movie Information App
 
